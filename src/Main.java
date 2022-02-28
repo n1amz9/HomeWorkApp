@@ -6,19 +6,20 @@ public class Main {
         checkSumSign();         //  Задание №2
         EndOfCase();    //  окончание задания
         printColor();           //  Задание №3
+        EndOfCase();    //  окончание задания
         compareNumbers();       //  Задание №4
         EndOfCase();    //  окончание задания
-        EndOfCase();    //  окончание задания
+
 
     }
 
-    public static void printThreeWords() {
+    public static void printThreeWords() {  //  Задание №1
         System.out.println("Orange");
         System.out.println("Banana");
         System.out.println("Apple");
     }
 
-    public static void checkSumSign() {
+    public static void checkSumSign() {     //  Задание №2
         int a = -2;
         int b = -3;
         int sum = a + b;
@@ -29,31 +30,28 @@ public class Main {
         }
     }
 
-    public static void printColor() {
+    public static void printColor() {   //  Задание №3
         int value = -5;
         if (value > 0 && value < 100) {
             System.out.println("Желтый");
-        }
-        else if (value > 100) {
+        } else if (value > 100) {
             System.out.println("Зеленый");
-        }
-        else {
+        } else {
             System.out.println("Красный");
         }
     }
 
-    public static void compareNumbers() {
+    public static void compareNumbers() {   //  Задание №4
         int a = 5;
         int b = 5;
-        if (a >= b)
-        {
+        if (a >= b) {
             System.out.println(" a >= b");
-        }
-        else {
+        } else {
             System.out.println("a < b");
         }
     }
-    public static void EndOfCase() {
+
+    public static void EndOfCase() {        //  окончание задания
         System.out.println("======= Конец задания  =======");
     }
 }
