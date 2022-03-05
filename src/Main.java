@@ -1,14 +1,14 @@
 public class Main {
 
     public static void main(String[] args) {
-        printThreeWords();      //  Задание №1
-        EndOfCase();    //  окончание задания
-        checkSumSign();         //  Задание №2
-        EndOfCase();    //  окончание задания
-        printColor();           //  Задание №3
-        EndOfCase();    //  окончание задания
-        compareNumbers();       //  Задание №4
-        EndOfCase();    //  окончание задания
+        printThreeWords();
+        end();
+        checkSumSign();
+        end();
+        printColor();
+        end();
+        compareNumbers();
+        end();
 
 
     }
@@ -51,7 +51,7 @@ public class Main {
         }
     }
 
-    public static void EndOfCase() {        //  окончание задания
+    public static void end() {        //  окончание задания
         System.out.println("======= Конец задания  =======");
     }
 }
