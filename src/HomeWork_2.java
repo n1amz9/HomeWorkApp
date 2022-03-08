@@ -11,11 +11,7 @@ public class HomeWork_2 {
     // 1. Написать метод, принимающий на вход два целых числа и проверяющий, что их сумма
     // лежит в пределах от 10 до 20 (включительно), если да – вернуть true, в противном случае – false.
     public static boolean SumCheck(int a, int b) {
-        boolean isTrue = false;
-        if (a + b <= 20 && a + b >= 10) {
-            isTrue = true;
-        }
-        return isTrue;
+        return a + b <= 20 && a + b >= 10;
     }
 
     //    2. Написать метод, которому в качестве параметра передается целое число,
