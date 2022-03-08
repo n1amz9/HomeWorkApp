@@ -4,7 +4,7 @@ public class HomeWork_2 {
         System.out.println(numberCheck(0));
         System.out.println(isPositive(5));
         stringMultiplier("Hello, World!", 5);
-        System.out.println(isLeap(2000));
+        System.out.println(isLeap(1700));
 
     }
 
@@ -51,10 +51,7 @@ public class HomeWork_2 {
     //    и возвращает boolean(високосный - true, не високосный - false).
     //    Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
     public static boolean isLeap(int year) {
-        boolean returnValue = false;
-        if (year % 4 == 0) {
-            returnValue = true;
-        }
+        boolean returnValue = year % 4 == 0;
         if (year % 100 == 0 && year % 400 != 0)
         {
             returnValue = false;
