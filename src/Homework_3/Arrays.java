@@ -20,18 +20,18 @@ public class Arrays {
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
     // Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ]. С помощью цикла и условия заменить 0 на 1, 1 на 0;
     public static void task_1() {
-        int[] MyArray = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-        for (int i = 0; i < MyArray.length; i++) {
-            switch (MyArray[i]) {
+        int[] myArray = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        for (int i = 0; i < myArray.length; i++) {
+            switch (myArray[i]) {
                 case 1:
-                    MyArray[i] = 0;
+                    myArray[i] = 0;
                     break;
                 case 0:
-                    MyArray[i] = 1;
+                    myArray[i] = 1;
                     break;
             }
         }
-        System.out.println(java.util.Arrays.toString(MyArray));
+        System.out.println(java.util.Arrays.toString(myArray));
     }
 
     //2. Задать пустой целочисленный массив длиной 100. С помощью цикла заполнить его значениями 1 2 3 4 5 6 7 8 … 100;
