@@ -1,6 +1,7 @@
 package Homework_3;
 
 import java.sql.Array;
+import java.util.Scanner;
 
 public class Arrays {
     public static void main(String[] args) {
@@ -9,6 +10,10 @@ public class Arrays {
         task_3();
         System.out.println("===");
         task_4();
+        Scanner scanner_1 = new Scanner("Введите число");
+        int x = scanner_1.nextInt();
+        int y = scanner_1.nextInt();
+        task_5(x,y);
     }
 
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -53,7 +58,7 @@ public class Arrays {
 // то есть [0][0], [1][1], [2][2], …, [n][n];
     public static void task_4() {
         int[][] MySuperArray;
-        MySuperArray = new int[10][10];
+        MySuperArray = new int[30][30];
         for (int i = 0; i < MySuperArray.length; i++) {
             for (int j = 0; j < MySuperArray[0].length; j++) {
                 if (i == j) {
@@ -64,9 +69,9 @@ public class Arrays {
                 }
             }
         }
-        for (int i = 0; i < MySuperArray.length; i++) {
+        for (int[] ints : MySuperArray) {
             {
-                System.out.println(java.util.Arrays.toString(MySuperArray[i]));
+                System.out.println(java.util.Arrays.toString(ints));
             }
         }
     }
@@ -74,14 +79,22 @@ public class Arrays {
     //5. Написать метод, принимающий на вход два аргумента: len и initialValue,
     // и возвращающий одномерный массив типа int длиной len, каждая ячейка которого равна initialValue;
     public static void task_5(int len, int initialValue) {
-
+        int[] resMass = new int[len];
+        java.util.Arrays.fill(resMass, initialValue);
+        System.out.println(java.util.Arrays.toString(resMass));
     }
 
+    //6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
+    public static void task_6() {
+        int[] resMass = new int[20];
+
+        java.util.Arrays.m
+    }
 }
 
 
 
-//6. * Задать одномерный массив и найти в нем минимальный и максимальный элементы ;
+
 
 //7. ** Написать метод,
 // в который передается не пустой одномерный целочисленный массив, метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
