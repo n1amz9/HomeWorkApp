@@ -4,6 +4,7 @@ import java.sql.Array;
 import java.util.Scanner;
 
 public class Arrays {
+    public static int[] superArray = {5, 1, 5, 5, 5, 5, 5, 5, 5, 5};
     public static void main(String[] args) {
         task_1();
         task_2();
@@ -12,6 +13,8 @@ public class Arrays {
         task_4();
         task_5(5, 10);
         task_6();
+        System.out.println(task_7(superArray));
+        task_08(superArray, 5);
     }
 
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -56,7 +59,7 @@ public class Arrays {
 // то есть [0][0], [1][1], [2][2], …, [n][n];
     public static void task_4() {
         int[][] MySuperArray;
-        MySuperArray = new int[30][30];
+        MySuperArray = new int[10][10];
         for (int i = 0; i < MySuperArray.length; i++) {
             for (int j = 0; j < MySuperArray[0].length; j++) {
                 if (i == j) {
@@ -101,14 +104,34 @@ public class Arrays {
     }
 
     //7. ** Написать метод,
-    // в который передается не пустой одномерный целочисленный массив, метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой части массива равны.
+    // в который передается не пустой одномерный целочисленный массив, метод должен вернуть true,
+    // если в массиве есть место, в котором сумма левой и правой части массива равны.
 
-    public static void task_7()
-    {
+    public static boolean task_7(int[] resMass) {
+                int count1 = 0;
+        int count2 = 0;
+        for (int i = 0; i < resMass.length; i++) {
+            if (i < resMass.length / 2) {
+                count1 += resMass[i];
+            } else {
+                count2 += resMass[i];
+            }
+        }
+        return count1 == count2;
+    }
 
+    // 8. *** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным),
+    // при этом метод должен сместить все элементы массива на n позиций.
+    // Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+
+    public static void task_08(int[] x, int n) {
+        for (int i = 0; i < x.length; i++) {
+                        // [1, 2, 3, 4, 5, 6]
+                        // [0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6]  = 5
+                        // [6]  = -4
+        }
     }
 }
 
-// 8. *** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным, или отрицательным), при этом метод должен сместить все элементы массива на n позиций.
-// Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+
 
