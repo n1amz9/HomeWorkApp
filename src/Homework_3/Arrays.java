@@ -36,22 +36,22 @@ public class Arrays {
 
     //2. Задать пустой целочисленный массив длиной 100. С помощью цикла заполнить его значениями 1 2 3 4 5 6 7 8 … 100;
     public static void task_2() {
-        int[] MyArray = new int[100];
+        int[] myArray = new int[100];
         for (int i = 0; i < 100; i++) {
-            MyArray[i] = i + 1;
+            myArray[i] = i + 1;
         }
-        System.out.println(java.util.Arrays.toString(MyArray));
+        System.out.println(java.util.Arrays.toString(myArray));
     }
 
     //3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
     public static void task_3() {
-        int[] MyArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        for (int i = 0; i < MyArray.length; i++) {
-            if (MyArray[i] < 6) {
-                MyArray[i] *= 2;
+        int[] myArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for (int i = 0; i < myArray.length; i++) {
+            if (myArray[i] < 6) {
+                myArray[i] *= 2;
             }
         }
-        System.out.println(java.util.Arrays.toString(MyArray));
+        System.out.println(java.util.Arrays.toString(myArray));
     }
 
     //4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое), и с помощью цикла(-ов) заполнить его диагональные элементы единицами
