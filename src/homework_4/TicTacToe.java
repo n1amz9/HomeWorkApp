@@ -2,6 +2,7 @@ package homework_4;
 
 import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -11,12 +12,17 @@ public class TicTacToe {
     public static final char DOT_EMPTY = '-';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
-    public static Scanner scanner = new Scanner("Введите координаты в формате X Y");
+    public static Scanner scanner = new Scanner(System.in);
+    public static Random rnd = new Random();
 
     public static void main(String[] args) {
         initMap();
         printMap();
         humanTurn();
+        printMap();
+        aiTurn ();
+        printMap();
+
     }
 
     public static void initMap() {
@@ -47,21 +53,50 @@ public class TicTacToe {
         System.out.println();
     }
 
-    public static void humanTurn() {
+    public static void humanTurn() {            // ход человека
         int x, y;
         do {
             System.out.println("Введите координаты в формате X Y");
             x = scanner.nextInt();
             y = scanner.nextInt();
+            if (x > SIZE || y > SIZE) {
+
+            }
         }
         while (!isCellValid(x, y));
-        map[x][y] = DOT_X;// не забыть
+        System.out.println("Вы походили в на Х:" + x + " Y: " + y );
+        map[y][x] = DOT_X;
     }
 
     public static boolean isCellValid(int x, int y) {
-        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
-            return false;
+        if (x < 0 || x > SIZE || y < 0 || y > SIZE) {// если координаты находятся вне обхвата массива, то отклонить введенные переменные
         }
-        return map[x][y] == DOT_EMPTY;
+        return map[y][x] == DOT_EMPTY;      // проверка, не занята ли выбранная клетка
     }
-}
+
+    public static void aiTurn () {
+        int x,y;
+        do {
+            x = rnd.nextInt(SIZE);
+            y = rnd.nextInt(SIZE);
+        }
+        while(!isCellValid(x,y));
+        System.out.println("Компьютер сделал ход! Точка X: " + x + " Точка Y: " + y);
+        map[x][y] = DOT_O;
+    }
+
+    public static boolean chkWin (char symb) {
+        int count = 0;
+        char sv = map[0][0];;
+        for (int i = 0; i < SIZE; i++) {
+            count++;
+            for (int j = 0; j < SIZE; j++) {
+                if (j+1 == SIZE && sv == map[i][j]) {
+                    return true;
+                }
+            }
+            count = 0;
+        }
+        return false;
+    }
+    }
