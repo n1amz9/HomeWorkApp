@@ -18,10 +18,22 @@ public class TicTacToe {
     public static void main(String[] args) {
         initMap();
         printMap();
-        humanTurn();
-        printMap();
-        aiTurn ();
-        printMap();
+        while (true)
+        {
+            humanTurn();
+            if (chkWin(DOT_X)) {
+                System.out.println("Победил человек!");
+                break;
+            }
+            printMap();
+
+            aiTurn();
+            if (chkWin(DOT_O)) {
+                System.out.println("Победил ИИ!");
+                break;
+            }
+        }
+
 
     }
 
@@ -64,7 +76,7 @@ public class TicTacToe {
             }
         }
         while (!isCellValid(x, y));
-        System.out.println("Вы походили в на Х:" + x + " Y: " + y );
+        System.out.println("Вы походили в на Х:" + x + " Y: " + y);
         map[y][x] = DOT_X;
     }
 
@@ -74,29 +86,36 @@ public class TicTacToe {
         return map[y][x] == DOT_EMPTY;      // проверка, не занята ли выбранная клетка
     }
 
-    public static void aiTurn () {
-        int x,y;
+    public static void aiTurn() {
+        int x, y;
         do {
             x = rnd.nextInt(SIZE);
             y = rnd.nextInt(SIZE);
         }
-        while(!isCellValid(x,y));
+        while (!isCellValid(x, y));
         System.out.println("Компьютер сделал ход! Точка X: " + x + " Точка Y: " + y);
         map[x][y] = DOT_O;
     }
 
-    public static boolean chkWin (char symb) {
+    public static boolean chkWin(char symb) {
+        int chk = 0;
         int count = 0;
-        char sv = map[0][0];;
         for (int i = 0; i < SIZE; i++) {
-            count++;
             for (int j = 0; j < SIZE; j++) {
-                if (j+1 == SIZE && sv == map[i][j]) {
-                    return true;
+                while (i == chk) {                  // пока строка одна и та же
+                    if (map[i][j] == symb) {        // сверяем символ с symb
+                        count++;                    // считаем количество схожих кейсов
+                    }
+                    else {                          // иначе выходим из массива и скипаем строку
+                        chk += 1;
+                    }
+                   if (count == SIZE) {
+                       return true;
+                   }
                 }
             }
-            count = 0;
         }
-        return false;
+        return false;           // если мы пересчитали все элементы, а подходящих не нашлось, то выводим false
     }
-    }
+
+}
