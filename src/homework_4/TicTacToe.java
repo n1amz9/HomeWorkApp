@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class TicTacToe {
     public static char[][] map;
-    public static final int SIZE = 4;
+    public static final int SIZE = 5;
     public static final int DOT_TO_WIN = 4;
     public static final char DOT_EMPTY = '-';
     public static final char DOT_X = 'X';
