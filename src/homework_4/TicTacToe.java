@@ -2,13 +2,14 @@ package homework_4;
 
 import java.sql.SQLOutput;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
     public static char[][] map;
-    public static final int SIZE = 3;
-    public static final int DOT_TO_WIN = 3;
+    public static final int SIZE = 4;
+    public static final int DOT_TO_WIN = 4;
     public static final char DOT_EMPTY = '-';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
@@ -18,23 +19,32 @@ public class TicTacToe {
     public static void main(String[] args) {
         initMap();
         printMap();
-        while (true)
-        {
+        while (true) {
             humanTurn();
-            if (chkWin(DOT_X)) {
-                System.out.println("Победил человек!");
+            printMap();
+            if (isWin(DOT_X)) {
+                System.out.println("Победил человек");
                 break;
             }
-            printMap();
-
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
+            if (checkWin_mod(DOT_O)) {
+                System.out.println("Победил ИИ!");
+                break;
+            }
             aiTurn();
-            if (chkWin(DOT_O)) {
+            printMap();
+            if (isMapFull()) {
+                System.out.println("Ничья");
+                break;
+            }
+            if (isWin(DOT_O)) {
                 System.out.println("Победил ИИ!");
                 break;
             }
         }
-
-
     }
 
     public static void initMap() {
@@ -47,6 +57,8 @@ public class TicTacToe {
     }
 
     public static void printMap() {
+        System.out.println("Текущий ход");
+        System.out.println("=================");
         for (int i = -1; i < SIZE; i++) {
             if (i == -1) {
                 System.out.print("  ");
@@ -62,7 +74,7 @@ public class TicTacToe {
             }
             System.out.println();
         }
-        System.out.println();
+        System.out.println("=================");
     }
 
     public static void humanTurn() {            // ход человека
@@ -72,12 +84,26 @@ public class TicTacToe {
             x = scanner.nextInt();
             y = scanner.nextInt();
             if (x > SIZE || y > SIZE) {
-
+                System.out.println("Вы ввели координаты вне обхвата массива. Введите координаты заного");
+                printMap();
+            }
+            if (map[x][y] != DOT_EMPTY) {
+                System.out.println("Данная клетка занята. Введите значение снова");
+                System.out.println(" ");
+                printMap();
             }
         }
         while (!isCellValid(x, y));
         System.out.println("Вы походили в на Х:" + x + " Y: " + y);
         map[y][x] = DOT_X;
+    }
+
+    public static boolean isWin(char symbol) {
+        if (checkWin_mod(symbol)) {
+            return true;
+        } else {
+            return chkDiag(symbol);
+        }
     }
 
     public static boolean isCellValid(int x, int y) {
@@ -97,25 +123,72 @@ public class TicTacToe {
         map[x][y] = DOT_O;
     }
 
-    public static boolean chkWin(char symb) {
-        int chk = 0;
-        int count = 0;
+    public static boolean isMapFull() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                while (i == chk) {                  // пока строка одна и та же
-                    if (map[i][j] == symb) {        // сверяем символ с symb
-                        count++;                    // считаем количество схожих кейсов
-                    }
-                    else {                          // иначе выходим из массива и скипаем строку
-                        chk += 1;
-                    }
-                   if (count == SIZE) {
-                       return true;
-                   }
+                if (map[i][j] == DOT_EMPTY) {
+                    return false;
                 }
             }
         }
-        return false;           // если мы пересчитали все элементы, а подходящих не нашлось, то выводим false
+        return true;
+    }
+
+//    public static boolean chkWin_old(char symb) {           //старая проверка
+//        if (map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
+//        if (map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
+//        if (map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
+//        if (map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
+//        if (map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
+//        if (map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
+//        if (map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
+//        if (map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
+//        return false;
+//    }
+
+    public static boolean checkWin_mod(char symbol) {
+        for (int i = 0; i < SIZE; i++) {
+            int rowCounter = 0;
+            int colCounter = 0;
+            for (int j = 0; j < SIZE; j++) {
+                if (map[i][j] == symbol) {
+                    rowCounter++;
+                } else {
+                    rowCounter = 0;
+                }
+                if (map[j][i] == symbol) {
+                    colCounter++;
+                } else {
+                    colCounter = 0;
+                }
+                if (rowCounter == DOT_TO_WIN || colCounter == DOT_TO_WIN) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean chkDiag(char symbol) {
+        int firstCounter = 0;
+        int secondCounter = 0;
+        for (int i = 0; i < SIZE; i++) {
+            if (map[i][i] == symbol) {
+                firstCounter++;
+            } else {
+                firstCounter = 0;
+            }
+            if (map[i][map.length - 1 - i] == symbol) {
+                secondCounter++;
+            } else {
+                secondCounter = 0;
+            }
+            if (firstCounter == DOT_TO_WIN || secondCounter == DOT_TO_WIN) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
+
