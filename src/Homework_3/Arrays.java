@@ -158,6 +158,5 @@ public class Arrays {
         System.out.println("Новый усложненный массив = " + java.util.Arrays.toString(mass));
     }
 }
-d
 
 
