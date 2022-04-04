@@ -2,7 +2,7 @@ package lesson_06_examples;
 
 import java.util.Objects;
 
-public class Animal {
+public abstract class Animal {
 
     private final String name;
     private final String color;
