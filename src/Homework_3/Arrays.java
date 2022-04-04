@@ -16,7 +16,6 @@ public class Arrays {
         task_6();
         System.out.println(task_7(superArray));
         task_08_1(superArray, 5);
-        task_08_2(superArray, 5);
     }
 
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -142,21 +141,20 @@ public class Arrays {
         System.out.println("Новый массив = " + java.util.Arrays.toString(sArray));
     }
 
-    public static void task_08_2(int[] mass, int n) {       // mass - массив, количество шагов. Усложненная реализация
-        int count = 0;
-        int pNull = 0;
-        int save = mass[0];
-        for (int i = 0; i < mass.length; i++) {
-            count++;
-            if (count <= n) {
-                for (int j = 0; j < mass.length; j++) {
-                    save = mass[i];
-                    mass[i] = save;
-                }
-            }
-        }
-        System.out.println("Новый усложненный массив = " + java.util.Arrays.toString(mass));
-    }
+//    public static void task_08_2(int[] mass, int n) {       // mass - массив, количество шагов. Усложненная реализация
+//        int count = 0;
+//        int pNull = 0;
+//        int shiftNumber = n % mass.length;
+//        for (int i = 0; i < mass.length; i++) {
+//            count++;
+//            if (count <= n) {
+//                for (int j = 0; j < mass.length; j++) {
+//                }
+//            }
+//        }
+//        System.out.println("Новый усложненный массив = " + java.util.Arrays.toString(mass));
+//
+//    }
 }
 
 
