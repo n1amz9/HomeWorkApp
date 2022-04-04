@@ -39,9 +39,7 @@ public abstract class Animal {
          return this.toString();
     }
 
-    public void voice () {
-        System.out.println("Animals' voice");
-    }
+    public abstract void voice();
 
     @Override
     public boolean equals(Object o) {
@@ -55,4 +53,6 @@ public abstract class Animal {
     public int hashCode() {
         return Objects.hash(name, color, age);
     }
+
+
 }
