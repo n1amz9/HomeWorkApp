@@ -18,6 +18,8 @@ public class TestCounter extends JFrame {
 
         JButton buttonLeft = new JButton("<");
         JButton buttonRight = new JButton(">");
+        JButton buttonIncrement = new JButton("+10");
+        JButton buttonDecrement = new JButton("-10");
         JButton buttonRestart = new JButton("Restart");
         JTextField counterField = new JTextField(String.valueOf(counter));
         counterField.setFont(font);
@@ -62,5 +64,7 @@ public class TestCounter extends JFrame {
         add(buttonRight, BorderLayout.EAST);
         add(counterField, BorderLayout.CENTER);
         add(buttonRestart, BorderLayout.SOUTH);
+        add(buttonIncrement, BorderLayout.EAST);
+        add(buttonDecrement, BorderLayout.WEST);
     }
 }
