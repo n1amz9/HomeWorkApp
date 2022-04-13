@@ -1,4 +1,4 @@
-package lesson_8;
+package lesson_8.Layouts;
 
 import javax.swing.*;
 import java.awt.*;
