@@ -10,8 +10,8 @@ public class Counter extends JFrame {
     public Counter() {
         setTitle("Counter for homework");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setBounds(500,500,700,500);
-        setLayout(new GridLayout(2,5));
+        setBounds(500,500,500,200);
+        setLayout(new GridLayout());
 
         Font font = new Font("Arial", Font.BOLD, 32);
         JButton decreaseButton = new JButton("<");
@@ -26,19 +26,21 @@ public class Counter extends JFrame {
         increaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                counterText.setText(String.valueOf(value++));
+                value++;
+                counterText.setText(String.valueOf(value));
             }
         });
 
         decreaseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (value < 0) {
+                if (value <= 0) {
                     System.out.println("Куда уж меньше то?");
 
                 }
                 else {
-                    counterText.setText(String.valueOf(value--));
+                    value--;
+                    counterText.setText(String.valueOf(value));
                 }
             }
         });
@@ -72,12 +74,12 @@ public class Counter extends JFrame {
             }
         });
 
-        add(decreaseButton,0);
-        add(decreaseButtonPlus,1);
-        add(counterText,2);
-        add(increaseButton,3);
-        add(increaseButtonPlus,4);
-        add(resetButton,5);
+        add(decreaseButtonPlus);
+        add(decreaseButton);
+        add(counterText);
+        add(increaseButton);
+        add(increaseButtonPlus);
+        add(resetButton);
 
         /*add(counterText, BorderLayout.CENTER);
         add(increaseButton, BorderLayout.EAST);
